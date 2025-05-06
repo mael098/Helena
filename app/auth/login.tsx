@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import { 
-  View, 
-  Text, 
-  TextInput, 
-  TouchableOpacity, 
-  StyleSheet, 
-  KeyboardAvoidingView, 
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet,
+  KeyboardAvoidingView,
   Platform,
   Image,
   ScrollView,
@@ -28,13 +28,13 @@ export default function Login() {
     try {
       setLoading(true);
       setError('');
-      
+
       if (!email || !password) {
         setError('Please enter both email and password');
         setLoading(false);
         return;
       }
-      
+
       // Simple validation
       if (!email.includes('@')) {
         setError('Please enter a valid email address');
@@ -43,7 +43,7 @@ export default function Login() {
       }
 
       await signIn(email, password);
-      router.replace('/(tabs)');
+      router.replace('/tools');
     } catch (err) {
       setError('Invalid email or password. Please try again.');
       console.error('Login error:', err);
@@ -53,18 +53,18 @@ export default function Login() {
   };
 
   return (
-    <KeyboardAvoidingView 
+    <KeyboardAvoidingView
       style={styles.container}
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 20}
     >
-      <ScrollView 
+      <ScrollView
         contentContainerStyle={styles.scrollContainer}
         showsVerticalScrollIndicator={false}
       >
         <View style={styles.logoContainer}>
-          <Image 
-            source={{ uri: 'https://images.pexels.com/photos/5407204/pexels-photo-5407204.jpeg?auto=compress&cs=tinysrgb&w=400' }} 
+          <Image
+            source={{ uri: 'https://images.pexels.com/photos/5407204/pexels-photo-5407204.jpeg?auto=compress&cs=tinysrgb&w=400' }}
             style={styles.logo}
           />
           <Text style={styles.logoText}>Ginnacle</Text>
@@ -106,8 +106,8 @@ export default function Login() {
             <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity 
-            style={styles.loginButton} 
+          <TouchableOpacity
+            style={styles.loginButton}
             onPress={handleLogin}
             disabled={loading}
           >

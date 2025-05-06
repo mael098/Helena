@@ -2,6 +2,7 @@ import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { Phone, Calendar, ChevronRight } from 'lucide-react-native';
 import { colors } from '@/constants/colors';
 import { PatientType } from '@/types/patients';
+import { useLanguage } from '@/context/LanguageContext';
 
 type PatientCardProps = {
   patient: PatientType;
@@ -9,6 +10,7 @@ type PatientCardProps = {
 };
 
 export default function PatientCard({ patient, onPress }: PatientCardProps) {
+  const { t } = useLanguage();
   return (
     <TouchableOpacity
       style={styles.card}
@@ -21,24 +23,24 @@ export default function PatientCard({ patient, onPress }: PatientCardProps) {
           style={styles.avatar}
         />
         <View style={styles.patientInfo}>
-          <Text style={styles.name}>{patient.name}</Text>
-          <Text style={styles.id}>ID: {patient.id}</Text>
+          <Text style={styles.name}>{t('patient.name')}: {patient.name}</Text>
+          <Text style={styles.id}>{t('patient.id')}: {patient.id}</Text>
           
           <View style={styles.contactRow}>
             <Phone size={14} color={colors.mediumGray} />
-            <Text style={styles.contactText}>{patient.phone}</Text>
+            <Text style={styles.contactText}>{t('patient.phone')}: {patient.phone}</Text>
           </View>
           
           <View style={styles.contactRow}>
             <Calendar size={14} color={colors.mediumGray} />
-            <Text style={styles.contactText}>{patient.dob}</Text>
+            <Text style={styles.contactText}>{t('patient.dob')}: {patient.dob}</Text>
           </View>
         </View>
       </View>
       
       <View style={styles.rightSection}>
         <View style={[styles.badge, { backgroundColor: getBadgeColor(patient.status) }]}>
-          <Text style={styles.badgeText}>{patient.status}</Text>
+          <Text style={styles.badgeText}>{t(`status.${patient.status.toLowerCase()}`)}</Text>
         </View>
         <ChevronRight size={20} color={colors.mediumGray} />
       </View>

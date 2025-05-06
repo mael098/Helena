@@ -14,54 +14,54 @@ export default function ToolsScreen() {
   const tools = [
     {
       id: 'calculator',
-      name: 'Obstetric Calculator',
-      description: 'Calculate due dates, gestational age, and more',
+      name: 'Calculadora Obstétrica',
+      description: 'Calcula fechas de parto, edad gestacional y más',
       icon: <Calculator size={24} color={colors.white} />,
       backgroundColor: colors.primary,
     },
     {
       id: 'menstrual',
-      name: 'Menstrual Tracker',
-      description: 'Track menstrual cycles and predict fertility windows',
+      name: 'Rastreador Menstrual',
+      description: 'Rastrea ciclos menstruales y predice ventanas fértiles',
       icon: <Calendar size={24} color={colors.white} />,
       backgroundColor: colors.secondary,
     },
     {
       id: 'templates',
-      name: 'Report Templates',
-      description: 'Pre-defined templates for common diagnoses',
+      name: 'Plantillas de Reportes',
+      description: 'Plantillas predefinidas para diagnósticos comunes',
       icon: <FileText size={24} color={colors.white} />,
       backgroundColor: colors.accent,
     },
     {
       id: 'measurements',
-      name: 'Growth Measurements',
-      description: 'Track fetal growth and development',
+      name: 'Mediciones de Crecimiento',
+      description: 'Rastrea el crecimiento y desarrollo fetal',
       icon: <PencilRuler size={24} color={colors.white} />,
-      backgroundColor: '#4CAF50', // Green
+      backgroundColor: '#4CAF50', // Verde
     },
     {
       id: 'screening',
-      name: 'Screening Guidelines',
-      description: 'Up-to-date screening recommendations',
+      name: 'Guías de Tamizaje',
+      description: 'Recomendaciones actualizadas de tamizaje',
       icon: <Stethoscope size={24} color={colors.white} />,
-      backgroundColor: '#9C27B0', // Purple
+      backgroundColor: '#9C27B0', // Morado
     },
     {
       id: 'newborn',
-      name: 'Newborn Assessment',
-      description: 'Tools for evaluating newborn health',
+      name: 'Evaluación del Recién Nacido',
+      description: 'Herramientas para evaluar la salud del recién nacido',
       icon: <Baby size={24} color={colors.white} />,
-      backgroundColor: '#FF9800', // Orange
+      backgroundColor: '#FF9800', // Naranja
     },
   ];
 
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <View style={styles.header}>
-        <Text style={styles.title}>Clinical Tools</Text>
+        <Text style={styles.title}>Herramientas Clínicas</Text>
         <Text style={styles.subtitle}>
-          Essential tools to assist with gynecological and obstetric care
+          Herramientas esenciales para asistir en el cuidado ginecológico y obstétrico
         </Text>
       </View>
 
@@ -83,16 +83,16 @@ export default function ToolsScreen() {
       </View>
       
       <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Recent Calculations</Text>
+        <Text style={styles.sectionTitle}>Cálculos Recientes</Text>
         <View style={styles.emptyState}>
-          <Text style={styles.emptyText}>No recent calculations</Text>
+          <Text style={styles.emptyText}>No hay cálculos recientes</Text>
         </View>
       </View>
       
       <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Saved Templates</Text>
+        <Text style={styles.sectionTitle}>Plantillas Guardadas</Text>
         <View style={styles.emptyState}>
-          <Text style={styles.emptyText}>No saved templates</Text>
+          <Text style={styles.emptyText}>No hay plantillas guardadas</Text>
         </View>
       </View>
     </ScrollView>

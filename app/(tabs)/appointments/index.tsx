@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { SetStateAction, useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, FlatList } from 'react-native';
 import { Calendar as CalendarIcon, Plus, ChevronLeft, ChevronRight } from 'lucide-react-native';
 import { Calendar } from 'react-native-calendars';
@@ -9,14 +9,14 @@ export default function AppointmentsScreen() {
   const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]);
   const [month, setMonth] = useState(new Date().getMonth());
   const [year, setYear] = useState(new Date().getFullYear());
-  
+
   // Format date to display in header
   const formattedDate = new Date(selectedDate).toLocaleDateString('en-US', {
     weekday: 'long',
     month: 'long',
     day: 'numeric',
   });
-  
+
   // Get appointments for selected date
   const filteredAppointments = mockAppointments.filter(
     appointment => appointment.date === selectedDate
@@ -25,7 +25,7 @@ export default function AppointmentsScreen() {
   // Generate marked dates object for the calendar
   const generateMarkedDates = () => {
     const markedDates: Record<string, any> = {};
-    
+
     // Add dots for each date with appointments
     mockAppointments.forEach(appointment => {
       if (markedDates[appointment.date]) {
@@ -39,14 +39,14 @@ export default function AppointmentsScreen() {
         };
       }
     });
-    
+
     // Mark the selected date
     markedDates[selectedDate] = {
       ...markedDates[selectedDate],
       selected: true,
       selectedColor: colors.primary,
     };
-    
+
     return markedDates;
   };
 
@@ -62,7 +62,7 @@ export default function AppointmentsScreen() {
           {new Date(year, month).toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
         </Text>
         <View style={styles.controls}>
-          <TouchableOpacity 
+          <TouchableOpacity
             style={styles.controlButton}
             onPress={() => {
               const newDate = new Date(year, month - 1);
@@ -72,7 +72,7 @@ export default function AppointmentsScreen() {
           >
             <ChevronLeft size={20} color={colors.primary} />
           </TouchableOpacity>
-          <TouchableOpacity 
+          <TouchableOpacity
             style={styles.controlButton}
             onPress={() => {
               const newDate = new Date(year, month + 1);
@@ -84,11 +84,11 @@ export default function AppointmentsScreen() {
           </TouchableOpacity>
         </View>
       </View>
-      
+
       <Calendar
         markingType="multi-dot"
         markedDates={generateMarkedDates()}
-        onDayPress={(day) => setSelectedDate(day.dateString)}
+        onDayPress={(day: { dateString: SetStateAction<string>; }) => setSelectedDate(day.dateString)}
         onMonthChange={handleMonthChange}
         theme={{
           backgroundColor: colors.white,
@@ -112,7 +112,6 @@ export default function AppointmentsScreen() {
           textDayHeaderFontSize: 14,
         }}
       />
-      
       <View style={styles.appointmentsContainer}>
         <View style={styles.appointmentsHeader}>
           <View style={styles.dateHeaderContainer}>
@@ -123,7 +122,6 @@ export default function AppointmentsScreen() {
             <Plus size={18} color={colors.white} />
           </TouchableOpacity>
         </View>
-        
         {filteredAppointments.length === 0 ? (
           <View style={styles.noAppointments}>
             <Text style={styles.noAppointmentsText}>No appointments for this day</Text>
@@ -136,7 +134,7 @@ export default function AppointmentsScreen() {
               <View style={styles.appointmentCard}>
                 <View style={styles.timeContainer}>
                   <Text style={styles.timeText}>{item.time}</Text>
-                  <View 
+                  <View
                     style={[
                       styles.statusIndicator,
                       { backgroundColor: getStatusColor(item.status) }

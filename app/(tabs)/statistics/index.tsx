@@ -11,7 +11,7 @@ export default function StatisticsScreen() {
   const [timeRange, setTimeRange] = useState('month');
   
   const patientTypeData = {
-    labels: ['Prenatal', 'Postnatal', 'Gynecology', 'Family Planning', 'Other'],
+    labels: ['Prenatal', 'Postnatal', 'Ginecología', 'Planificación Familiar', 'Otro'],
     datasets: [
       {
         data: [35, 20, 25, 15, 5]
@@ -20,7 +20,7 @@ export default function StatisticsScreen() {
   };
   
   const appointmentsData = {
-    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+    labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun'],
     datasets: [
       {
         data: [20, 45, 28, 35, 40, 43]
@@ -58,7 +58,7 @@ export default function StatisticsScreen() {
       legendFontSize: 12
     }
   ];
-  
+
   const chartConfig = {
     backgroundGradientFrom: colors.white,
     backgroundGradientTo: colors.white,
@@ -70,25 +70,25 @@ export default function StatisticsScreen() {
     labelColor: (opacity = 1) => `rgba(85, 85, 85, ${opacity})`,
   };
 
-  // Summary cards data
+  // Datos de las tarjetas resumen
   const summaryData = [
     {
       icon: <Users size={24} color={colors.primary} />,
-      title: 'Total Patients',
+      title: 'Pacientes Totales',
       value: '248',
       change: '+12%',
       isPositive: true
     },
     {
       icon: <Calendar size={24} color={colors.primary} />,
-      title: 'Appointments',
+      title: 'Citas',
       value: '52',
       change: '+8%',
       isPositive: true
     },
     {
       icon: <BarChartIcon size={24} color={colors.primary} />,
-      title: 'No-shows',
+      title: 'Ausencias',
       value: '5%',
       change: '-2%',
       isPositive: true
@@ -98,10 +98,10 @@ export default function StatisticsScreen() {
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <View style={styles.header}>
-        <Text style={styles.title}>Practice Insights</Text>
+        <Text style={styles.title}>Estadísticas de la Práctica</Text>
         <TouchableOpacity style={styles.filterButton}>
           <Filter size={18} color={colors.primary} />
-          <Text style={styles.filterText}>Filter</Text>
+          <Text style={styles.filterText}>Filtrar</Text>
         </TouchableOpacity>
       </View>
 
@@ -116,7 +116,7 @@ export default function StatisticsScreen() {
               timeRange === 'week' && styles.activeTimeButtonText
             ]}
           >
-            Week
+            Semana
           </Text>
         </TouchableOpacity>
 
@@ -130,7 +130,7 @@ export default function StatisticsScreen() {
               timeRange === 'month' && styles.activeTimeButtonText
             ]}
           >
-            Month
+            Mes
           </Text>
         </TouchableOpacity>
 
@@ -144,7 +144,7 @@ export default function StatisticsScreen() {
               timeRange === 'year' && styles.activeTimeButtonText
             ]}
           >
-            Year
+            Año
           </Text>
         </TouchableOpacity>
       </View>
@@ -172,7 +172,7 @@ export default function StatisticsScreen() {
       <View style={styles.chartContainer}>
         <View style={styles.chartHeader}>
           <BarChartIcon size={18} color={colors.primary} />
-          <Text style={styles.chartTitle}>Monthly Appointments</Text>
+          <Text style={styles.chartTitle}>Citas Mensuales</Text>
         </View>
         <BarChart
           data={appointmentsData}
@@ -182,13 +182,15 @@ export default function StatisticsScreen() {
           style={styles.chart}
           fromZero
           showValuesOnTopOfBars
+          yAxisLabel="$"
+          yAxisSuffix=""
         />
       </View>
 
       <View style={styles.chartContainer}>
         <View style={styles.chartHeader}>
           <PieChartIcon size={18} color={colors.primary} />
-          <Text style={styles.chartTitle}>Patient Age Distribution</Text>
+          <Text style={styles.chartTitle}>Distribución por Edad</Text>
         </View>
         <PieChart
           data={ageDistributionData}
@@ -204,7 +206,7 @@ export default function StatisticsScreen() {
       <View style={styles.chartContainer}>
         <View style={styles.chartHeader}>
           <BarChartIcon size={18} color={colors.primary} />
-          <Text style={styles.chartTitle}>Visits by Type</Text>
+          <Text style={styles.chartTitle}>Visitas por Tipo</Text>
         </View>
         <BarChart
           data={patientTypeData}
@@ -214,6 +216,8 @@ export default function StatisticsScreen() {
           style={styles.chart}
           fromZero
           showValuesOnTopOfBars
+          yAxisLabel="$"
+          yAxisSuffix=""
         />
       </View>
     </ScrollView>

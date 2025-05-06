@@ -32,45 +32,45 @@ export default function TabLayout() {
       }}
     >
       <Tabs.Screen
-        name="patients"
+        name="pacientes"
         options={{
-          title: 'Patients',
+          title: 'Pacientes',
           tabBarIcon: ({ color, size }) => (
             <Users size={size} color={color} />
           ),
         }}
       />
       <Tabs.Screen
-        name="appointments"
+        name="citas"
         options={{
-          title: 'Appointments',
+          title: 'Citas',
           tabBarIcon: ({ color, size }) => (
             <Calendar size={size} color={color} />
           ),
         }}
       />
       <Tabs.Screen
-        name="tools"
+        name="herramientas"
         options={{
-          title: 'Tools',
+          title: 'Herramientas',
           tabBarIcon: ({ color, size }) => (
             <FlaskConical size={size} color={color} />
           ),
         }}
       />
       <Tabs.Screen
-        name="statistics"
+        name="estadisticas"
         options={{
-          title: 'Statistics',
+          title: 'Estadísticas',
           tabBarIcon: ({ color, size }) => (
             <BarChart3 size={size} color={color} />
           ),
         }}
       />
       <Tabs.Screen
-        name="settings"
+        name="configuracion"
         options={{
-          title: 'Settings',
+          title: 'Configuración',
           tabBarIcon: ({ color, size }) => (
             <Settings size={size} color={color} />
           ),
