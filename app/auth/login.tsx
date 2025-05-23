@@ -30,14 +30,14 @@ export default function Login() {
       setError('');
 
       if (!email || !password) {
-        setError('Please enter both email and password');
+        setError('Por favor, ingresa tu correo y contraseña');
         setLoading(false);
         return;
       }
 
-      // Simple validation
+      // Validación simple
       if (!email.includes('@')) {
-        setError('Please enter a valid email address');
+        setError('Por favor, ingresa un correo válido');
         setLoading(false);
         return;
       }
@@ -45,8 +45,8 @@ export default function Login() {
       await signIn(email, password);
       router.replace('/tools');
     } catch (err) {
-      setError('Invalid email or password. Please try again.');
-      console.error('Login error:', err);
+      setError('Correo o contraseña inválidos. Inténtalo de nuevo.');
+      console.error('Error al iniciar sesión:', err);
     } finally {
       setLoading(false);
     }
@@ -67,13 +67,13 @@ export default function Login() {
             source={{ uri: 'https://images.pexels.com/photos/5407204/pexels-photo-5407204.jpeg?auto=compress&cs=tinysrgb&w=400' }}
             style={styles.logo}
           />
-          <Text style={styles.logoText}>Ginnacle</Text>
-          <Text style={styles.logoSubtext}>Gynecology Excellence</Text>
+          <Text style={styles.logoText}>VitaLink</Text>
+          <Text style={styles.logoSubtext}>Excelencia en medicida general </Text>
         </View>
 
         <View style={styles.formContainer}>
-          <Text style={styles.welcomeText}>Welcome Back</Text>
-          <Text style={styles.instructionText}>Sign in to continue</Text>
+          <Text style={styles.welcomeText}>Bienvenido de nuevo</Text>
+          <Text style={styles.instructionText}>Inicia sesión para continuar</Text>
 
           {error ? <Text style={styles.errorText}>{error}</Text> : null}
 
@@ -81,7 +81,7 @@ export default function Login() {
             <Mail size={20} color={colors.mediumGray} />
             <TextInput
               style={styles.input}
-              placeholder="Email"
+              placeholder="Correo electrónico"
               placeholderTextColor={colors.mediumGray}
               value={email}
               onChangeText={setEmail}
@@ -94,7 +94,7 @@ export default function Login() {
             <Lock size={20} color={colors.mediumGray} />
             <TextInput
               style={styles.input}
-              placeholder="Password"
+              placeholder="Contraseña"
               placeholderTextColor={colors.mediumGray}
               value={password}
               onChangeText={setPassword}
@@ -103,7 +103,7 @@ export default function Login() {
           </View>
 
           <TouchableOpacity style={styles.forgotPasswordContainer}>
-            <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
+            <Text style={styles.forgotPasswordText}>¿Olvidaste tu contraseña?</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -114,7 +114,7 @@ export default function Login() {
             {loading ? (
               <ActivityIndicator color={colors.white} />
             ) : (
-              <Text style={styles.loginButtonText}>Sign In</Text>
+              <Text style={styles.loginButtonText}>Iniciar sesión</Text>
             )}
           </TouchableOpacity>
         </View>

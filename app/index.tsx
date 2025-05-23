@@ -10,7 +10,7 @@ export default function Index() {
   if (isLoading) {
     return (
       <View style={styles.container}>
-        <Text style={styles.title}>Ginnacle</Text>
+        <Text style={styles.title}>Vitalink</Text>
         <ActivityIndicator size="large" color={colors.primary} />
       </View>
     );
